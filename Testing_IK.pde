@@ -1,46 +1,50 @@
-float segLength = 180;
-float x, y, x2, y2;
+int bone1StartX;
+int bone1StartY = 30;
 
-void setup() 
+int bone2StartX;
+int bone2StartY;
+
+float rotationBone;
+
+void setup()
 {
-  size(1000, 1000);
-  strokeWeight(20.0);
-  stroke(255, 100);
-  
-  x = width/2;
-  y = height/2;
-  x2 = x;
-  y2 = y;
+  size(600, 600);
+  bone1StartX = width/2;
 }
 
-void draw() 
+void draw()
 {
-  background(0);
+  float mousePos = 0.001;
   
-  float dx = mouseX - x;
-  float dy = mouseY - y;
+  background(200);
+  //circle1();
+  bone1();
   
-  float angle1 = atan2(dy, dx);
-  
-  float tx = mouseX - cos(angle1) * segLength;
-  float ty = mouseY - sin(angle1) * segLength;
-  dx = tx - x2;
-  dy = ty - y2;
-  
-  float angle2 = atan2(dy, dx);
-  
-  x = x2 + cos(angle2) * segLength;
-  y = y2 + sin(angle2) * segLength;
-  
-  segment(x, y, angle1); 
-  segment(x2, y2, angle2); 
+  //rotate(PI/4);
+  //atan2(0,1);
+  //println();
 }
 
-void segment(float x, float y, float a) 
+void bone1()
 {
-  pushMatrix(); // bone start
-  translate(x, y);
-  rotate(a);
-  line(0, 0, segLength, 0);
-  popMatrix(); // bone end
+  translate(bone1StartX, bone1StartY);
+  
+  if(mouseY > 1 && mouseY < width/2)
+  { 
+    rotationBone = mouseY * 0.005;
+    rotate(rotationBone);
+  }
+  else
+  {
+    rotate(rotationBone);
+  }
+  
+  line(0,0, 200, 0);
+  strokeWeight(5);
+}
+
+void circle1()
+{
+  //translate(width/2, height/2);
+  circle(width/2, height/2, 20);
 }
