@@ -25,6 +25,7 @@ void draw()
   //println();
 }
 
+// lala
 void bone1()
 {
   translate(bone1StartX, bone1StartY);
