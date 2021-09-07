@@ -62,7 +62,7 @@ void bone2(int yPos)
   //  rotate(rotationBone);
   //}
   
-  line(0,yPos, mouseX, mouseY);
+  line(0,yPos, mouseX*0.1, mouseY*0.1);
   strokeWeight(5);
   popMatrix();
 }
